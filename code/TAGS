@@ -1,0 +1,670 @@
+
+c:/Dev/Snake/code\HandmadeMath.h,39815
+#define HANDMADE_MATH_HHANDMADE_MATH_H97,3253
+# define COVERAGE(COVERAGE101,3351
+# define ASSERT_COVERED(ASSERT_COVERED105,3406
+#   define HANDMADE_MATH__USE_SSE HANDMADE_MATH__USE_SSE114,3877
+#   define HANDMADE_MATH__USE_SSE HANDMADE_MATH__USE_SSE118,4077
+# define HANDMADE_MATH__USE_C11_GENERICS HANDMADE_MATH__USE_C11_GENERICS124,4295
+# define HMM_DEPRECATED(HMM_DEPRECATED148,4931
+# define HMM_DEPRECATED(HMM_DEPRECATED150,5017
+# define HMM_DEPRECATED(HMM_DEPRECATED152,5080
+# define HANDMADE_MATH_USE_RADIANSHANDMADE_MATH_USE_RADIANS163,5285
+#define HMM_PI HMM_PI166,5332
+#define HMM_PI32 HMM_PI32167,5370
+#define HMM_DEG180 HMM_DEG180168,5402
+#define HMM_DEG18032 HMM_DEG18032169,5427
+#define HMM_TURNHALF HMM_TURNHALF170,5455
+#define HMM_TURNHALF32 HMM_TURNHALF32171,5480
+#define HMM_RadToDeg HMM_RadToDeg172,5508
+#define HMM_RadToTurn HMM_RadToTurn173,5558
+#define HMM_DegToRad HMM_DegToRad174,5611
+#define HMM_DegToTurn HMM_DegToTurn175,5661
+#define HMM_TurnToRad HMM_TurnToRad176,5718
+#define HMM_TurnToDeg HMM_TurnToDeg177,5771
+# define HMM_AngleRad(HMM_AngleRad180,5868
+# define HMM_AngleDeg(HMM_AngleDeg181,5897
+# define HMM_AngleTurn(HMM_AngleTurn182,5941
+# define HMM_AngleRad(HMM_AngleRad184,6028
+# define HMM_AngleDeg(HMM_AngleDeg185,6072
+# define HMM_AngleTurn(HMM_AngleTurn186,6101
+# define HMM_AngleRad(HMM_AngleRad188,6186
+# define HMM_AngleDeg(HMM_AngleDeg189,6231
+# define HMM_AngleTurn(HMM_AngleTurn190,6276
+# define HMM_SINF HMM_SINF195,6384
+# define HMM_COSF HMM_COSF196,6407
+# define HMM_TANF HMM_TANF197,6430
+# define HMM_SQRTF HMM_SQRTF198,6453
+# define HMM_ACOSF HMM_ACOSF199,6478
+# define HMM_ANGLE_USER_TO_INTERNAL(HMM_ANGLE_USER_TO_INTERNAL203,6552
+#  define HMM_ANGLE_INTERNAL_TO_USER(HMM_ANGLE_INTERNAL_TO_USER208,6695
+#  define HMM_ANGLE_INTERNAL_TO_USER(HMM_ANGLE_INTERNAL_TO_USER210,6782
+#  define HMM_ANGLE_INTERNAL_TO_USER(HMM_ANGLE_INTERNAL_TO_USER212,6881
+#define HMM_MIN(HMM_MIN216,6957
+#define HMM_MAX(HMM_MAX217,7003
+#define HMM_ABS(HMM_ABS218,7049
+#define HMM_MOD(HMM_MOD219,7091
+#define HMM_SQUARE(HMM_SQUARE220,7168
+typedef union HMM_Vec2HMM_Vec2222,7203
+        float X, Y;X226,7245
+        float X, Y;HMM_Vec2::__anon1::X226,7245
+        float X, Y;Y226,7245
+        float X, Y;HMM_Vec2::__anon1::Y226,7245
+        float x, y;x230,7289
+        float x, y;HMM_Vec2::__anon2::x230,7289
+        float x, y;y230,7289
+        float x, y;HMM_Vec2::__anon2::y230,7289
+        float U, V;U235,7334
+        float U, V;HMM_Vec2::__anon3::U235,7334
+        float U, V;V235,7334
+        float U, V;HMM_Vec2::__anon3::V235,7334
+        float u, v;u239,7378
+        float u, v;HMM_Vec2::__anon4::u239,7378
+        float u, v;v239,7378
+        float u, v;HMM_Vec2::__anon4::v239,7378
+        float Left, Right;Left244,7423
+        float Left, Right;HMM_Vec2::__anon5::Left244,7423
+        float Left, Right;Right244,7423
+        float Left, Right;HMM_Vec2::__anon5::Right244,7423
+        float left, right;left249,7475
+        float left, right;HMM_Vec2::__anon6::left249,7475
+        float left, right;right249,7475
+        float left, right;HMM_Vec2::__anon6::right249,7475
+        float Width, Height;Width254,7527
+        float Width, Height;HMM_Vec2::__anon7::Width254,7527
+        float Width, Height;Height254,7527
+        float Width, Height;HMM_Vec2::__anon7::Height254,7527
+        float width, height;width258,7580
+        float width, height;HMM_Vec2::__anon8::width258,7580
+        float width, height;height258,7580
+        float width, height;HMM_Vec2::__anon8::height258,7580
+    float Elements[2];Elements261,7617
+    float Elements[2];HMM_Vec2::Elements261,7617
+    inline float &operator[](const int &Index)operator []264,7660
+    inline float &operator[](const int &Index)HMM_Vec2::operator []264,7660
+} HMM_Vec2;HMM_Vec2269,7758
+typedef union HMM_Vec3HMM_Vec3271,7771
+        float X, Y, Z;X275,7813
+        float X, Y, Z;HMM_Vec3::__anon9::X275,7813
+        float X, Y, Z;Y275,7813
+        float X, Y, Z;HMM_Vec3::__anon9::Y275,7813
+        float X, Y, Z;Z275,7813
+        float X, Y, Z;HMM_Vec3::__anon9::Z275,7813
+        float x, y, z;x279,7860
+        float x, y, z;HMM_Vec3::__anon10::x279,7860
+        float x, y, z;y279,7860
+        float x, y, z;HMM_Vec3::__anon10::y279,7860
+        float x, y, z;z279,7860
+        float x, y, z;HMM_Vec3::__anon10::z279,7860
+        float U, V, W;U285,7909
+        float U, V, W;HMM_Vec3::__anon11::U285,7909
+        float U, V, W;V285,7909
+        float U, V, W;HMM_Vec3::__anon11::V285,7909
+        float U, V, W;W285,7909
+        float U, V, W;HMM_Vec3::__anon11::W285,7909
+        float u, v, w;u290,7957
+        float u, v, w;HMM_Vec3::__anon12::u290,7957
+        float u, v, w;v290,7957
+        float u, v, w;HMM_Vec3::__anon12::v290,7957
+        float u, v, w;w290,7957
+        float u, v, w;HMM_Vec3::__anon12::w290,7957
+        float R, G, B;R295,8005
+        float R, G, B;HMM_Vec3::__anon13::R295,8005
+        float R, G, B;G295,8005
+        float R, G, B;HMM_Vec3::__anon13::G295,8005
+        float R, G, B;B295,8005
+        float R, G, B;HMM_Vec3::__anon13::B295,8005
+        float r, g, b;r299,8052
+        float r, g, b;HMM_Vec3::__anon14::r299,8052
+        float r, g, b;g299,8052
+        float r, g, b;HMM_Vec3::__anon14::g299,8052
+        float r, g, b;b299,8052
+        float r, g, b;HMM_Vec3::__anon14::b299,8052
+        HMM_Vec2 XY;XY304,8100
+        HMM_Vec2 XY;HMM_Vec3::__anon15::XY304,8100
+        float _Ignored0;_Ignored0305,8121
+        float _Ignored0;HMM_Vec3::__anon15::_Ignored0305,8121
+        HMM_Vec2 xy;xy309,8170
+        HMM_Vec2 xy;HMM_Vec3::__anon16::xy309,8170
+        float _Ignored0;_Ignored0310,8191
+        float _Ignored0;HMM_Vec3::__anon16::_Ignored0310,8191
+        float _Ignored1;_Ignored1315,8241
+        float _Ignored1;HMM_Vec3::__anon17::_Ignored1315,8241
+        HMM_Vec2 YZ;YZ316,8266
+        HMM_Vec2 YZ;HMM_Vec3::__anon17::YZ316,8266
+        float _Ignored1;_Ignored1320,8311
+        float _Ignored1;HMM_Vec3::__anon18::_Ignored1320,8311
+        HMM_Vec2 yz;yz321,8336
+        HMM_Vec2 yz;HMM_Vec3::__anon18::yz321,8336
+        HMM_Vec2 UV;UV326,8382
+        HMM_Vec2 UV;HMM_Vec3::__anon19::UV326,8382
+        float _Ignored2;_Ignored2327,8403
+        float _Ignored2;HMM_Vec3::__anon19::_Ignored2327,8403
+        HMM_Vec2 uv;uv331,8452
+        HMM_Vec2 uv;HMM_Vec3::__anon20::uv331,8452
+        float _Ignored2;_Ignored2332,8473
+        float _Ignored2;HMM_Vec3::__anon20::_Ignored2332,8473
+        float _Ignored3;_Ignored3337,8523
+        float _Ignored3;HMM_Vec3::__anon21::_Ignored3337,8523
+        HMM_Vec2 VW;VW338,8548
+        HMM_Vec2 VW;HMM_Vec3::__anon21::VW338,8548
+        float _Ignored3;_Ignored3342,8593
+        float _Ignored3;HMM_Vec3::__anon22::_Ignored3342,8593
+        HMM_Vec2 vw;vw343,8618
+        HMM_Vec2 vw;HMM_Vec3::__anon22::vw343,8618
+    float Elements[3];Elements346,8647
+    float Elements[3];HMM_Vec3::Elements346,8647
+    float elements[3];elements347,8670
+    float elements[3];HMM_Vec3::elements347,8670
+    inline float &operator[](const int &Index)operator []350,8713
+    inline float &operator[](const int &Index)HMM_Vec3::operator []350,8713
+} HMM_Vec3;HMM_Vec3355,8811
+typedef union HMM_Vec4HMM_Vec4357,8824
+            HMM_Vec3 XYZ;XYZ363,8890
+            HMM_Vec3 XYZ;HMM_Vec4::__anon23::__anon24::XYZ363,8890
+                float X, Y, Z;X366,8949
+                float X, Y, Z;HMM_Vec4::__anon23::__anon24::__anon25::X366,8949
+                float X, Y, Z;Y366,8949
+                float X, Y, Z;HMM_Vec4::__anon23::__anon24::__anon25::Y366,8949
+                float X, Y, Z;Z366,8949
+                float X, Y, Z;HMM_Vec4::__anon23::__anon24::__anon25::Z366,8949
+        float W;W370,9007
+        float W;HMM_Vec4::__anon23::W370,9007
+            HMM_Vec3 xyz;xyz376,9072
+            HMM_Vec3 xyz;HMM_Vec4::__anon26::__anon27::xyz376,9072
+                float x, y, z;x379,9131
+                float x, y, z;HMM_Vec4::__anon26::__anon27::__anon28::x379,9131
+                float x, y, z;y379,9131
+                float x, y, z;HMM_Vec4::__anon26::__anon27::__anon28::y379,9131
+                float x, y, z;z379,9131
+                float x, y, z;HMM_Vec4::__anon26::__anon27::__anon28::z379,9131
+        float w;w383,9189
+        float w;HMM_Vec4::__anon26::w383,9189
+            HMM_Vec3 RGB;RGB390,9255
+            HMM_Vec3 RGB;HMM_Vec4::__anon29::__anon30::RGB390,9255
+                float R, G, B;R393,9314
+                float R, G, B;HMM_Vec4::__anon29::__anon30::__anon31::R393,9314
+                float R, G, B;G393,9314
+                float R, G, B;HMM_Vec4::__anon29::__anon30::__anon31::G393,9314
+                float R, G, B;B393,9314
+                float R, G, B;HMM_Vec4::__anon29::__anon30::__anon31::B393,9314
+        float A;A397,9372
+        float A;HMM_Vec4::__anon29::A397,9372
+            HMM_Vec3 rgb;rgb403,9437
+            HMM_Vec3 rgb;HMM_Vec4::__anon32::__anon33::rgb403,9437
+                float r, g, b;r406,9496
+                float r, g, b;HMM_Vec4::__anon32::__anon33::__anon34::r406,9496
+                float r, g, b;g406,9496
+                float r, g, b;HMM_Vec4::__anon32::__anon33::__anon34::g406,9496
+                float r, g, b;b406,9496
+                float r, g, b;HMM_Vec4::__anon32::__anon33::__anon34::b406,9496
+        float a;a410,9554
+        float a;HMM_Vec4::__anon32::a410,9554
+        HMM_Vec2 XY;XY416,9597
+        HMM_Vec2 XY;HMM_Vec4::__anon35::XY416,9597
+        float _Ignored0;_Ignored0417,9618
+        float _Ignored0;HMM_Vec4::__anon35::_Ignored0417,9618
+        float _Ignored1;_Ignored1418,9643
+        float _Ignored1;HMM_Vec4::__anon35::_Ignored1418,9643
+        HMM_Vec2 xy;xy422,9692
+        HMM_Vec2 xy;HMM_Vec4::__anon36::xy422,9692
+        float _Ignored0;_Ignored0423,9713
+        float _Ignored0;HMM_Vec4::__anon36::_Ignored0423,9713
+        float _Ignored1;_Ignored1424,9738
+        float _Ignored1;HMM_Vec4::__anon36::_Ignored1424,9738
+        float _Ignored2;_Ignored2429,9788
+        float _Ignored2;HMM_Vec4::__anon37::_Ignored2429,9788
+        HMM_Vec2 YZ;YZ430,9813
+        HMM_Vec2 YZ;HMM_Vec4::__anon37::YZ430,9813
+        float _Ignored3;_Ignored3431,9834
+        float _Ignored3;HMM_Vec4::__anon37::_Ignored3431,9834
+        float _Ignored2;_Ignored2435,9883
+        float _Ignored2;HMM_Vec4::__anon38::_Ignored2435,9883
+        HMM_Vec2 yz;yz436,9908
+        HMM_Vec2 yz;HMM_Vec4::__anon38::yz436,9908
+        float _Ignored3;_Ignored3437,9929
+        float _Ignored3;HMM_Vec4::__anon38::_Ignored3437,9929
+        float _Ignored4;_Ignored4442,9979
+        float _Ignored4;HMM_Vec4::__anon39::_Ignored4442,9979
+        float _Ignored5;_Ignored5443,10004
+        float _Ignored5;HMM_Vec4::__anon39::_Ignored5443,10004
+        HMM_Vec2 ZW;ZW444,10029
+        HMM_Vec2 ZW;HMM_Vec4::__anon39::ZW444,10029
+        float _Ignored4;_Ignored4448,10074
+        float _Ignored4;HMM_Vec4::__anon40::_Ignored4448,10074
+        float _Ignored5;_Ignored5449,10099
+        float _Ignored5;HMM_Vec4::__anon40::_Ignored5449,10099
+        HMM_Vec2 zw;zw450,10124
+        HMM_Vec2 zw;HMM_Vec4::__anon40::zw450,10124
+    float Elements[4];Elements453,10153
+    float Elements[4];HMM_Vec4::Elements453,10153
+    float elements[4];elements454,10176
+    float elements[4];HMM_Vec4::elements454,10176
+    __m128 SSE;SSE457,10230
+    __m128 SSE;HMM_Vec4::SSE457,10230
+    inline float &operator[](const int &Index)operator []461,10273
+    inline float &operator[](const int &Index)HMM_Vec4::operator []461,10273
+} HMM_Vec4;HMM_Vec4466,10371
+typedef union HMM_Mat2HMM_Mat2468,10384
+    float Elements[2][2];Elements470,10409
+    float Elements[2][2];HMM_Mat2::Elements470,10409
+    float elements[2][2];elements471,10435
+    float elements[2][2];HMM_Mat2::elements471,10435
+    HMM_Vec2 Columns[2];Columns472,10461
+    HMM_Vec2 Columns[2];HMM_Mat2::Columns472,10461
+    HMM_Vec2 columns[2];columns473,10486
+    HMM_Vec2 columns[2];HMM_Mat2::columns473,10486
+    inline HMM_Vec2 &operator[](const int &Index)operator []476,10531
+    inline HMM_Vec2 &operator[](const int &Index)HMM_Mat2::operator []476,10531
+} HMM_Mat2;HMM_Mat2481,10631
+typedef union HMM_Mat3HMM_Mat3483,10648
+    float Elements[3][3];Elements485,10673
+    float Elements[3][3];HMM_Mat3::Elements485,10673
+    HMM_Vec3 Columns[3];Columns486,10699
+    HMM_Vec3 Columns[3];HMM_Mat3::Columns486,10699
+    float elements[3][3];elements488,10729
+    float elements[3][3];HMM_Mat3::elements488,10729
+    HMM_Vec3 columns[3];columns489,10755
+    HMM_Vec3 columns[3];HMM_Mat3::columns489,10755
+    inline HMM_Vec3 &operator[](const int &Index)operator []492,10800
+    inline HMM_Vec3 &operator[](const int &Index)HMM_Mat3::operator []492,10800
+} HMM_Mat3;HMM_Mat3497,10900
+typedef union HMM_Mat4HMM_Mat4499,10913
+    float Elements[4][4];Elements501,10938
+    float Elements[4][4];HMM_Mat4::Elements501,10938
+    HMM_Vec4 Columns[4];Columns502,10964
+    HMM_Vec4 Columns[4];HMM_Mat4::Columns502,10964
+    float elements[4][4];elements504,10994
+    float elements[4][4];HMM_Mat4::elements504,10994
+    HMM_Vec4 columns[4];columns505,11020
+    HMM_Vec4 columns[4];HMM_Mat4::columns505,11020
+    inline HMM_Vec4 &operator[](const int &Index)operator []508,11065
+    inline HMM_Vec4 &operator[](const int &Index)HMM_Mat4::operator []508,11065
+} HMM_Mat4;HMM_Mat4513,11165
+typedef union HMM_QuatHMM_Quat515,11178
+            HMM_Vec3 XYZ;XYZ521,11244
+            HMM_Vec3 XYZ;HMM_Quat::__anon41::__anon42::XYZ521,11244
+                float X, Y, Z;X524,11303
+                float X, Y, Z;HMM_Quat::__anon41::__anon42::__anon43::X524,11303
+                float X, Y, Z;Y524,11303
+                float X, Y, Z;HMM_Quat::__anon41::__anon42::__anon43::Y524,11303
+                float X, Y, Z;Z524,11303
+                float X, Y, Z;HMM_Quat::__anon41::__anon42::__anon43::Z524,11303
+        float W;W528,11361
+        float W;HMM_Quat::__anon41::W528,11361
+            HMM_Vec3 xyz;xyz534,11426
+            HMM_Vec3 xyz;HMM_Quat::__anon44::__anon45::xyz534,11426
+                float x, y, z;x537,11485
+                float x, y, z;HMM_Quat::__anon44::__anon45::__anon46::x537,11485
+                float x, y, z;y537,11485
+                float x, y, z;HMM_Quat::__anon44::__anon45::__anon46::y537,11485
+                float x, y, z;z537,11485
+                float x, y, z;HMM_Quat::__anon44::__anon45::__anon46::z537,11485
+        float w;w541,11543
+        float w;HMM_Quat::__anon44::w541,11543
+    float Elements[4];Elements545,11573
+    float Elements[4];HMM_Quat::Elements545,11573
+    float elements[4];elements546,11596
+    float elements[4];HMM_Quat::elements546,11596
+    __m128 SSE;SSE549,11650
+    __m128 SSE;HMM_Quat::SSE549,11650
+} HMM_Quat;HMM_Quat551,11673
+typedef signed int HMM_Bool;HMM_Bool553,11686
+static inline float HMM_ToRad(float Angle)HMM_ToRad558,11758
+static inline float HMM_ToDeg(float Angle)HMM_ToDeg571,12066
+static inline float HMM_ToTurn(float Angle)HMM_ToTurn584,12374
+static inline float HMM_SinF(float Angle)HMM_SinF602,12747
+static inline float HMM_CosF(float Angle)HMM_CosF609,12902
+static inline float HMM_TanF(float Angle)HMM_TanF616,13057
+static inline float HMM_ACosF(float Arg)HMM_ACosF623,13213
+static inline float HMM_SqrtF(float Float)HMM_SqrtF630,13368
+static inline float HMM_InvSqrtF(float Float)HMM_InvSqrtF648,13689
+static inline float HMM_Lerp(float A, float Time, float B)HMM_Lerp665,13902
+static inline float HMM_Clamp(float Min, float Value, float Max)HMM_Clamp672,14060
+static inline HMM_Vec2 HMM_V2(float X, float Y)HMM_V2697,14376
+static inline HMM_Vec3 HMM_V3(float X, float Y, float Z)HMM_V3709,14555
+static inline HMM_Vec4 HMM_V4(float X, float Y, float Z, float W)HMM_V4722,14761
+static inline HMM_Vec4 HMM_V4V(HMM_Vec3 Vector, float W)HMM_V4V741,15081
+static inline HMM_Vec2 HMM_AddV2(HMM_Vec2 Left, HMM_Vec2 Right)HMM_AddV2763,15424
+static inline HMM_Vec3 HMM_AddV3(HMM_Vec3 Left, HMM_Vec3 Right)HMM_AddV3775,15655
+static inline HMM_Vec4 HMM_AddV4(HMM_Vec4 Left, HMM_Vec4 Right)HMM_AddV4788,15919
+static inline HMM_Vec2 HMM_SubV2(HMM_Vec2 Left, HMM_Vec2 Right)HMM_SubV2807,16310
+static inline HMM_Vec3 HMM_SubV3(HMM_Vec3 Left, HMM_Vec3 Right)HMM_SubV3819,16541
+static inline HMM_Vec4 HMM_SubV4(HMM_Vec4 Left, HMM_Vec4 Right)HMM_SubV4832,16805
+static inline HMM_Vec2 HMM_MulV2(HMM_Vec2 Left, HMM_Vec2 Right)HMM_MulV2851,17196
+static inline HMM_Vec2 HMM_MulV2F(HMM_Vec2 Left, float Right)HMM_MulV2F863,17428
+static inline HMM_Vec3 HMM_MulV3(HMM_Vec3 Left, HMM_Vec3 Right)HMM_MulV3875,17654
+static inline HMM_Vec3 HMM_MulV3F(HMM_Vec3 Left, float Right)HMM_MulV3F888,17919
+static inline HMM_Vec4 HMM_MulV4(HMM_Vec4 Left, HMM_Vec4 Right)HMM_MulV4901,18176
+static inline HMM_Vec4 HMM_MulV4F(HMM_Vec4 Left, float Right)HMM_MulV4F920,18568
+static inline HMM_Vec2 HMM_DivV2(HMM_Vec2 Left, HMM_Vec2 Right)HMM_DivV2940,18987
+static inline HMM_Vec2 HMM_DivV2F(HMM_Vec2 Left, float Right)HMM_DivV2F952,19219
+static inline HMM_Vec3 HMM_DivV3(HMM_Vec3 Left, HMM_Vec3 Right)HMM_DivV3964,19445
+static inline HMM_Vec3 HMM_DivV3F(HMM_Vec3 Left, float Right)HMM_DivV3F977,19710
+static inline HMM_Vec4 HMM_DivV4(HMM_Vec4 Left, HMM_Vec4 Right)HMM_DivV4990,19967
+static inline HMM_Vec4 HMM_DivV4F(HMM_Vec4 Left, float Right)HMM_DivV4F1009,20359
+static inline HMM_Bool HMM_EqV2(HMM_Vec2 Left, HMM_Vec2 Right)HMM_EqV21029,20777
+static inline HMM_Bool HMM_EqV3(HMM_Vec3 Left, HMM_Vec3 Right)HMM_EqV31036,20948
+static inline HMM_Bool HMM_EqV4(HMM_Vec4 Left, HMM_Vec4 Right)HMM_EqV41043,21140
+static inline float HMM_DotV2(HMM_Vec2 Left, HMM_Vec2 Right)HMM_DotV21050,21354
+static inline float HMM_DotV3(HMM_Vec3 Left, HMM_Vec3 Right)HMM_DotV31057,21526
+static inline float HMM_DotV4(HMM_Vec4 Left, HMM_Vec4 Right)HMM_DotV41064,21719
+static inline HMM_Vec3 HMM_Cross(HMM_Vec3 Left, HMM_Vec3 Right)HMM_Cross1088,22662
+static inline float HMM_LenSqrV2(HMM_Vec2 A)HMM_LenSqrV21106,23034
+static inline float HMM_LenSqrV3(HMM_Vec3 A)HMM_LenSqrV31113,23172
+static inline float HMM_LenSqrV4(HMM_Vec4 A)HMM_LenSqrV41120,23310
+static inline float HMM_LenV2(HMM_Vec2 A)HMM_LenV21127,23445
+static inline float HMM_LenV3(HMM_Vec3 A)HMM_LenV31134,23585
+static inline float HMM_LenV4(HMM_Vec4 A)HMM_LenV41141,23725
+static inline HMM_Vec2 HMM_NormV2(HMM_Vec2 A)HMM_NormV21148,23866
+static inline HMM_Vec3 HMM_NormV3(HMM_Vec3 A)HMM_NormV31155,24030
+static inline HMM_Vec4 HMM_NormV4(HMM_Vec4 A)HMM_NormV41162,24194
+static inline HMM_Vec2 HMM_LerpV2(HMM_Vec2 A, float Time, HMM_Vec2 B) HMM_LerpV21173,24394
+static inline HMM_Vec3 HMM_LerpV3(HMM_Vec3 A, float Time, HMM_Vec3 B) HMM_LerpV31180,24597
+static inline HMM_Vec4 HMM_LerpV4(HMM_Vec4 A, float Time, HMM_Vec4 B) HMM_LerpV41187,24800
+static inline HMM_Vec4 HMM_LinearCombineV4M4(HMM_Vec4 Left, HMM_Mat4 Right)HMM_LinearCombineV4M41198,25035
+static inline HMM_Mat2 HMM_M2(void)HMM_M21238,26611
+static inline HMM_Mat2 HMM_M2D(float Diagonal)HMM_M2D1246,26747
+static inline HMM_Mat2 HMM_TransposeM2(HMM_Mat2 Matrix)HMM_TransposeM21258,26985
+static inline HMM_Mat2 HMM_AddM2(HMM_Mat2 Left, HMM_Mat2 Right)HMM_AddM21271,27268
+static inline HMM_Mat2 HMM_SubM2(HMM_Mat2 Left, HMM_Mat2 Right)HMM_SubM21286,27733
+static inline HMM_Vec2 HMM_MulM2V2(HMM_Mat2 Matrix, HMM_Vec2 Vector)HMM_MulM2V21301,28197
+static inline HMM_Mat2 HMM_MulM2(HMM_Mat2 Left, HMM_Mat2 Right)HMM_MulM21317,28609
+static inline HMM_Mat2 HMM_MulM2F(HMM_Mat2 Matrix, float Scalar)HMM_MulM2F1329,28905
+static inline HMM_Mat2 HMM_DivM2F(HMM_Mat2 Matrix, float Scalar)HMM_DivM2F1344,29322
+static inline float HMM_DeterminantM2(HMM_Mat2 Matrix) HMM_DeterminantM21359,29742
+static inline HMM_Mat2 HMM_InvGeneralM2(HMM_Mat2 Matrix) HMM_InvGeneralM21367,29975
+static inline HMM_Mat3 HMM_M3(void)HMM_M31386,30499
+static inline HMM_Mat3 HMM_M3D(float Diagonal)HMM_M3D1394,30635
+static inline HMM_Mat3 HMM_TransposeM3(HMM_Mat3 Matrix)HMM_TransposeM31407,30911
+static inline HMM_Mat3 HMM_AddM3(HMM_Mat3 Left, HMM_Mat3 Right)HMM_AddM31424,31394
+static inline HMM_Mat3 HMM_SubM3(HMM_Mat3 Left, HMM_Mat3 Right)HMM_SubM31444,32220
+static inline HMM_Vec3 HMM_MulM3V3(HMM_Mat3 Matrix, HMM_Vec3 Vector)HMM_MulM3V31464,33036
+static inline HMM_Mat3 HMM_MulM3(HMM_Mat3 Left, HMM_Mat3 Right)HMM_MulM31486,33742
+static inline HMM_Mat3 HMM_MulM3F(HMM_Mat3 Matrix, float Scalar)HMM_MulM3F1499,34095
+static inline HMM_Mat3 HMM_DivM3F(HMM_Mat3 Matrix, float Scalar)HMM_DivM3F1519,34815
+static inline float HMM_DeterminantM3(HMM_Mat3 Matrix) HMM_DeterminantM31539,35554
+static inline HMM_Mat3 HMM_InvGeneralM3(HMM_Mat3 Matrix) HMM_InvGeneralM31552,35981
+static inline HMM_Mat4 HMM_M4(void)HMM_M41576,36715
+static inline HMM_Mat4 HMM_M4D(float Diagonal)HMM_M4D1584,36851
+static inline HMM_Mat4 HMM_TransposeM4(HMM_Mat4 Matrix)HMM_TransposeM41598,37161
+static inline HMM_Mat4 HMM_AddM4(HMM_Mat4 Left, HMM_Mat4 Right)HMM_AddM41624,38103
+static inline HMM_Mat4 HMM_SubM4(HMM_Mat4 Left, HMM_Mat4 Right)HMM_SubM41658,39796
+static inline HMM_Mat4 HMM_MulM4(HMM_Mat4 Left, HMM_Mat4 Right)HMM_MulM41692,41490
+static inline HMM_Mat4 HMM_MulM4F(HMM_Mat4 Matrix, float Scalar)HMM_MulM4F1706,41940
+static inline HMM_Vec4 HMM_MulM4V4(HMM_Mat4 Matrix, HMM_Vec4 Vector)HMM_MulM4V41741,43453
+static inline HMM_Mat4 HMM_DivM4F(HMM_Mat4 Matrix, float Scalar)HMM_DivM4F1748,43634
+static inline float HMM_DeterminantM4(HMM_Mat4 Matrix) HMM_DeterminantM41783,45153
+static inline HMM_Mat4 HMM_InvGeneralM4(HMM_Mat4 Matrix) HMM_InvGeneralM41798,45936
+static inline HMM_Mat4 HMM_Orthographic_RH_NO(float Left, float Right, float Bottom, float Top, float Near, float Far)HMM_Orthographic_RH_NO1830,47795
+static inline HMM_Mat4 HMM_Orthographic_RH_ZO(float Left, float Right, float Bottom, float Top, float Near, float Far)HMM_Orthographic_RH_ZO1852,48692
+static inline HMM_Mat4 HMM_Orthographic_LH_NO(float Left, float Right, float Bottom, float Top, float Near, float Far)HMM_Orthographic_LH_NO1874,49578
+static inline HMM_Mat4 HMM_Orthographic_LH_ZO(float Left, float Right, float Bottom, float Top, float Near, float Far)HMM_Orthographic_LH_ZO1888,50220
+static inline HMM_Mat4 HMM_InvOrthographic(HMM_Mat4 OrthoMatrix)HMM_InvOrthographic1901,50744
+static inline HMM_Mat4 HMM_Perspective_RH_NO(float FOV, float AspectRatio, float Near, float Far)HMM_Perspective_RH_NO1919,51409
+static inline HMM_Mat4 HMM_Perspective_RH_ZO(float FOV, float AspectRatio, float Near, float Far)HMM_Perspective_RH_ZO1939,52035
+static inline HMM_Mat4 HMM_Perspective_LH_NO(float FOV, float AspectRatio, float Near, float Far)HMM_Perspective_LH_NO1959,52643
+static inline HMM_Mat4 HMM_Perspective_LH_ZO(float FOV, float AspectRatio, float Near, float Far)HMM_Perspective_LH_ZO1971,53028
+static inline HMM_Mat4 HMM_InvPerspective_RH(HMM_Mat4 PerspectiveMatrix)HMM_InvPerspective_RH1983,53413
+static inline HMM_Mat4 HMM_InvPerspective_LH(HMM_Mat4 PerspectiveMatrix)HMM_InvPerspective_LH2000,54007
+static inline HMM_Mat4 HMM_Translate(HMM_Vec3 Translation)HMM_Translate2017,54594
+static inline HMM_Mat4 HMM_InvTranslate(HMM_Mat4 TranslationMatrix)HMM_InvTranslate2030,54910
+static inline HMM_Mat4 HMM_Rotate_RH(float Angle, HMM_Vec3 Axis)HMM_Rotate_RH2043,55266
+static inline HMM_Mat4 HMM_Rotate_LH(float Angle, HMM_Vec3 Axis)HMM_Rotate_LH2071,56291
+static inline HMM_Mat4 HMM_InvRotate(HMM_Mat4 RotationMatrix)HMM_InvRotate2079,56524
+static inline HMM_Mat4 HMM_Scale(HMM_Vec3 Scale)HMM_Scale2086,56693
+static inline HMM_Mat4 HMM_InvScale(HMM_Mat4 ScaleMatrix) HMM_InvScale2099,56973
+static inline HMM_Mat4 _HMM_LookAt(HMM_Vec3 F,  HMM_Vec3 S, HMM_Vec3 U,  HMM_Vec3 Eye)_HMM_LookAt2111,57301
+static inline HMM_Mat4 HMM_LookAt_RH(HMM_Vec3 Eye, HMM_Vec3 Center, HMM_Vec3 Up)HMM_LookAt_RH2139,58044
+static inline HMM_Mat4 HMM_LookAt_LH(HMM_Vec3 Eye, HMM_Vec3 Center, HMM_Vec3 Up)HMM_LookAt_LH2151,58366
+static inline HMM_Mat4 HMM_InvLookAt(HMM_Mat4 Matrix)HMM_InvLookAt2163,58688
+static inline HMM_Quat HMM_Q(float X, float Y, float Z, float W)HMM_Q2194,59812
+static inline HMM_Quat HMM_QV4(HMM_Vec4 Vector)HMM_QV42213,60130
+static inline HMM_Quat HMM_AddQ(HMM_Quat Left, HMM_Quat Right)HMM_AddQ2232,60449
+static inline HMM_Quat HMM_SubQ(HMM_Quat Left, HMM_Quat Right)HMM_SubQ2252,60838
+static inline HMM_Quat HMM_MulQ(HMM_Quat Left, HMM_Quat Right)HMM_MulQ2271,61226
+static inline HMM_Quat HMM_MulQF(HMM_Quat Left, float Multiplicative)HMM_MulQF2319,63458
+static inline HMM_Quat HMM_DivQF(HMM_Quat Left, float Divnd)HMM_DivQF2339,63929
+static inline float HMM_DotQ(HMM_Quat Left, HMM_Quat Right)HMM_DotQ2359,64345
+static inline HMM_Quat HMM_InvQ(HMM_Quat Left)HMM_InvQ2380,65046
+static inline HMM_Quat HMM_NormQ(HMM_Quat Quat)HMM_NormQ2394,65327
+static inline HMM_Quat _HMM_MixQ(HMM_Quat Left, float MixLeft, HMM_Quat Right, float MixRight) {_HMM_MixQ2406,65636
+static inline HMM_Quat HMM_NLerp(HMM_Quat Left, float Time, HMM_Quat Right)HMM_NLerp2426,66317
+static inline HMM_Quat HMM_SLerp(HMM_Quat Left, float Time, HMM_Quat Right)HMM_SLerp2437,66568
+static inline HMM_Mat4 HMM_QToM4(HMM_Quat Left)HMM_QToM42466,67417
+static inline HMM_Quat HMM_M4ToQ_RH(HMM_Mat4 M)HMM_M4ToQ_RH2526,69460
+static inline HMM_Quat HMM_M4ToQ_LH(HMM_Mat4 M)HMM_M4ToQ_LH2583,71175
+static inline HMM_Quat HMM_QFromAxisAngle_RH(HMM_Vec3 Axis, float AngleOfRotation)HMM_QFromAxisAngle_RH2641,72900
+static inline HMM_Quat HMM_QFromAxisAngle_LH(HMM_Vec3 Axis, float AngleOfRotation)HMM_QFromAxisAngle_LH2657,73329
+static inline float HMM_Len(HMM_Vec2 A)HMM_Len2672,73595
+static inline float HMM_Len(HMM_Vec3 A)HMM_Len2679,73725
+static inline float HMM_Len(HMM_Vec4 A)HMM_Len2686,73855
+static inline float HMM_LenSqr(HMM_Vec2 A)HMM_LenSqr2693,73988
+static inline float HMM_LenSqr(HMM_Vec3 A)HMM_LenSqr2700,74130
+static inline float HMM_LenSqr(HMM_Vec4 A)HMM_LenSqr2707,74272
+static inline HMM_Vec2 HMM_Norm(HMM_Vec2 A)HMM_Norm2714,74412
+static inline HMM_Vec3 HMM_Norm(HMM_Vec3 A)HMM_Norm2721,74549
+static inline HMM_Vec4 HMM_Norm(HMM_Vec4 A)HMM_Norm2728,74686
+static inline HMM_Quat HMM_Norm(HMM_Quat A)HMM_Norm2735,74822
+static inline float HMM_Dot(HMM_Vec2 Left, HMM_Vec2 VecTwo)HMM_Dot2742,74956
+static inline float HMM_Dot(HMM_Vec3 Left, HMM_Vec3 VecTwo)HMM_Dot2749,75117
+static inline float HMM_Dot(HMM_Vec4 Left, HMM_Vec4 VecTwo)HMM_Dot2756,75278
+static inline HMM_Vec2 HMM_Lerp(HMM_Vec2 Left, float Time, HMM_Vec2 Right) HMM_Lerp2763,75441
+static inline HMM_Vec3 HMM_Lerp(HMM_Vec3 Left, float Time, HMM_Vec3 Right) HMM_Lerp2770,75626
+static inline HMM_Vec4 HMM_Lerp(HMM_Vec4 Left, float Time, HMM_Vec4 Right) HMM_Lerp2777,75811
+static inline HMM_Mat2 HMM_Transpose(HMM_Mat2 Matrix)HMM_Transpose2784,76001
+static inline HMM_Mat3 HMM_Transpose(HMM_Mat3 Matrix)HMM_Transpose2791,76168
+static inline HMM_Mat4 HMM_Transpose(HMM_Mat4 Matrix)HMM_Transpose2798,76335
+static inline float HMM_Determinant(HMM_Mat2 Matrix)HMM_Determinant2805,76504
+static inline float HMM_Determinant(HMM_Mat3 Matrix)HMM_Determinant2812,76676
+static inline float HMM_Determinant(HMM_Mat4 Matrix)HMM_Determinant2819,76848
+static inline HMM_Mat2 HMM_InvGeneral(HMM_Mat2 Matrix)HMM_InvGeneral2826,77019
+static inline HMM_Mat3 HMM_InvGeneral(HMM_Mat3 Matrix)HMM_InvGeneral2833,77190
+static inline HMM_Mat4 HMM_InvGeneral(HMM_Mat4 Matrix)HMM_InvGeneral2840,77361
+static inline float HMM_Dot(HMM_Quat QuatOne, HMM_Quat QuatTwo)HMM_Dot2847,77524
+static inline HMM_Vec2 HMM_Add(HMM_Vec2 Left, HMM_Vec2 Right)HMM_Add2854,77691
+static inline HMM_Vec3 HMM_Add(HMM_Vec3 Left, HMM_Vec3 Right)HMM_Add2861,77853
+static inline HMM_Vec4 HMM_Add(HMM_Vec4 Left, HMM_Vec4 Right)HMM_Add2868,78015
+static inline HMM_Mat2 HMM_Add(HMM_Mat2 Left, HMM_Mat2 Right)HMM_Add2875,78177
+static inline HMM_Mat3 HMM_Add(HMM_Mat3 Left, HMM_Mat3 Right)HMM_Add2882,78339
+static inline HMM_Mat4 HMM_Add(HMM_Mat4 Left, HMM_Mat4 Right)HMM_Add2889,78501
+static inline HMM_Quat HMM_Add(HMM_Quat Left, HMM_Quat Right)HMM_Add2896,78662
+static inline HMM_Vec2 HMM_Sub(HMM_Vec2 Left, HMM_Vec2 Right)HMM_Sub2903,78822
+static inline HMM_Vec3 HMM_Sub(HMM_Vec3 Left, HMM_Vec3 Right)HMM_Sub2910,78984
+static inline HMM_Vec4 HMM_Sub(HMM_Vec4 Left, HMM_Vec4 Right)HMM_Sub2917,79146
+static inline HMM_Mat2 HMM_Sub(HMM_Mat2 Left, HMM_Mat2 Right)HMM_Sub2924,79308
+static inline HMM_Mat3 HMM_Sub(HMM_Mat3 Left, HMM_Mat3 Right)HMM_Sub2931,79470
+static inline HMM_Mat4 HMM_Sub(HMM_Mat4 Left, HMM_Mat4 Right)HMM_Sub2938,79632
+static inline HMM_Quat HMM_Sub(HMM_Quat Left, HMM_Quat Right)HMM_Sub2945,79793
+static inline HMM_Vec2 HMM_Mul(HMM_Vec2 Left, HMM_Vec2 Right)HMM_Mul2952,79953
+static inline HMM_Vec2 HMM_Mul(HMM_Vec2 Left, float Right)HMM_Mul2959,80116
+static inline HMM_Vec3 HMM_Mul(HMM_Vec3 Left, HMM_Vec3 Right)HMM_Mul2966,80277
+static inline HMM_Vec3 HMM_Mul(HMM_Vec3 Left, float Right)HMM_Mul2973,80440
+static inline HMM_Vec4 HMM_Mul(HMM_Vec4 Left, HMM_Vec4 Right)HMM_Mul2980,80601
+static inline HMM_Vec4 HMM_Mul(HMM_Vec4 Left, float Right)HMM_Mul2987,80764
+static inline HMM_Mat2 HMM_Mul(HMM_Mat2 Left, HMM_Mat2 Right)HMM_Mul2994,80925
+static inline HMM_Mat3 HMM_Mul(HMM_Mat3 Left, HMM_Mat3 Right)HMM_Mul3001,81087
+static inline HMM_Mat4 HMM_Mul(HMM_Mat4 Left, HMM_Mat4 Right)HMM_Mul3008,81249
+static inline HMM_Mat2 HMM_Mul(HMM_Mat2 Left, float Right)HMM_Mul3015,81412
+static inline HMM_Mat3 HMM_Mul(HMM_Mat3 Left, float Right)HMM_Mul3022,81574
+static inline HMM_Mat4 HMM_Mul(HMM_Mat4 Left, float Right)HMM_Mul3029,81736
+static inline HMM_Vec2 HMM_Mul(HMM_Mat2 Matrix, HMM_Vec2 Vector)HMM_Mul3036,81899
+static inline HMM_Vec3 HMM_Mul(HMM_Mat3 Matrix, HMM_Vec3 Vector)HMM_Mul3043,82073
+static inline HMM_Vec4 HMM_Mul(HMM_Mat4 Matrix, HMM_Vec4 Vector)HMM_Mul3050,82247
+static inline HMM_Quat HMM_Mul(HMM_Quat Left, HMM_Quat Right)HMM_Mul3057,82418
+static inline HMM_Quat HMM_Mul(HMM_Quat Left, float Right)HMM_Mul3064,82578
+static inline HMM_Vec2 HMM_Div(HMM_Vec2 Left, HMM_Vec2 Right)HMM_Div3071,82737
+static inline HMM_Vec2 HMM_Div(HMM_Vec2 Left, float Right)HMM_Div3078,82900
+static inline HMM_Vec3 HMM_Div(HMM_Vec3 Left, HMM_Vec3 Right)HMM_Div3085,83061
+static inline HMM_Vec3 HMM_Div(HMM_Vec3 Left, float Right)HMM_Div3092,83224
+static inline HMM_Vec4 HMM_Div(HMM_Vec4 Left, HMM_Vec4 Right)HMM_Div3099,83385
+static inline HMM_Vec4 HMM_Div(HMM_Vec4 Left, float Right)HMM_Div3106,83548
+static inline HMM_Mat2 HMM_Div(HMM_Mat2 Left, float Right)HMM_Div3113,83710
+static inline HMM_Mat3 HMM_Div(HMM_Mat3 Left, float Right)HMM_Div3120,83872
+static inline HMM_Mat4 HMM_Div(HMM_Mat4 Left, float Right)HMM_Div3127,84034
+static inline HMM_Quat HMM_Div(HMM_Quat Left, float Right)HMM_Div3134,84195
+static inline HMM_Bool HMM_Eq(HMM_Vec2 Left, HMM_Vec2 Right)HMM_Eq3141,84353
+static inline HMM_Bool HMM_Eq(HMM_Vec3 Left, HMM_Vec3 Right)HMM_Eq3148,84511
+static inline HMM_Bool HMM_Eq(HMM_Vec4 Left, HMM_Vec4 Right)HMM_Eq3155,84669
+static inline HMM_Vec2 operator+(HMM_Vec2 Left, HMM_Vec2 Right)operator +3162,84827
+static inline HMM_Vec3 operator+(HMM_Vec3 Left, HMM_Vec3 Right)operator +3169,84989
+static inline HMM_Vec4 operator+(HMM_Vec4 Left, HMM_Vec4 Right)operator +3176,85151
+static inline HMM_Mat2 operator+(HMM_Mat2 Left, HMM_Mat2 Right)operator +3183,85313
+static inline HMM_Mat3 operator+(HMM_Mat3 Left, HMM_Mat3 Right)operator +3190,85475
+static inline HMM_Mat4 operator+(HMM_Mat4 Left, HMM_Mat4 Right)operator +3197,85637
+static inline HMM_Quat operator+(HMM_Quat Left, HMM_Quat Right)operator +3204,85798
+static inline HMM_Vec2 operator-(HMM_Vec2 Left, HMM_Vec2 Right)operator -3211,85958
+static inline HMM_Vec3 operator-(HMM_Vec3 Left, HMM_Vec3 Right)operator -3218,86120
+static inline HMM_Vec4 operator-(HMM_Vec4 Left, HMM_Vec4 Right)operator -3225,86282
+static inline HMM_Mat2 operator-(HMM_Mat2 Left, HMM_Mat2 Right)operator -3232,86444
+static inline HMM_Mat3 operator-(HMM_Mat3 Left, HMM_Mat3 Right)operator -3239,86606
+static inline HMM_Mat4 operator-(HMM_Mat4 Left, HMM_Mat4 Right)operator -3246,86768
+static inline HMM_Quat operator-(HMM_Quat Left, HMM_Quat Right)operator -3253,86929
+static inline HMM_Vec2 operator*(HMM_Vec2 Left, HMM_Vec2 Right)operator *3260,87089
+static inline HMM_Vec3 operator*(HMM_Vec3 Left, HMM_Vec3 Right)operator *3267,87251
+static inline HMM_Vec4 operator*(HMM_Vec4 Left, HMM_Vec4 Right)operator *3274,87413
+static inline HMM_Mat2 operator*(HMM_Mat2 Left, HMM_Mat2 Right)operator *3281,87575
+static inline HMM_Mat3 operator*(HMM_Mat3 Left, HMM_Mat3 Right)operator *3288,87737
+static inline HMM_Mat4 operator*(HMM_Mat4 Left, HMM_Mat4 Right)operator *3295,87899
+static inline HMM_Quat operator*(HMM_Quat Left, HMM_Quat Right)operator *3302,88060
+static inline HMM_Vec2 operator*(HMM_Vec2 Left, float Right)operator *3309,88221
+static inline HMM_Vec3 operator*(HMM_Vec3 Left, float Right)operator *3316,88383
+static inline HMM_Vec4 operator*(HMM_Vec4 Left, float Right)operator *3323,88545
+static inline HMM_Mat2 operator*(HMM_Mat2 Left, float Right)operator *3330,88707
+static inline HMM_Mat3 operator*(HMM_Mat3 Left, float Right)operator *3337,88869
+static inline HMM_Mat4 operator*(HMM_Mat4 Left, float Right)operator *3344,89031
+static inline HMM_Quat operator*(HMM_Quat Left, float Right)operator *3351,89192
+static inline HMM_Vec2 operator*(float Left, HMM_Vec2 Right)operator *3358,89356
+static inline HMM_Vec3 operator*(float Left, HMM_Vec3 Right)operator *3365,89526
+static inline HMM_Vec4 operator*(float Left, HMM_Vec4 Right)operator *3372,89696
+static inline HMM_Mat2 operator*(float Left, HMM_Mat2 Right)operator *3379,89866
+static inline HMM_Mat3 operator*(float Left, HMM_Mat3 Right)operator *3386,90036
+static inline HMM_Mat4 operator*(float Left, HMM_Mat4 Right)operator *3393,90206
+static inline HMM_Quat operator*(float Left, HMM_Quat Right)operator *3400,90375
+static inline HMM_Vec2 operator*(HMM_Mat2 Matrix, HMM_Vec2 Vector)operator *3407,90540
+static inline HMM_Vec3 operator*(HMM_Mat3 Matrix, HMM_Vec3 Vector)operator *3414,90714
+static inline HMM_Vec4 operator*(HMM_Mat4 Matrix, HMM_Vec4 Vector)operator *3421,90888
+static inline HMM_Vec2 operator/(HMM_Vec2 Left, HMM_Vec2 Right)operator /3428,91060
+static inline HMM_Vec3 operator/(HMM_Vec3 Left, HMM_Vec3 Right)operator /3435,91222
+static inline HMM_Vec4 operator/(HMM_Vec4 Left, HMM_Vec4 Right)operator /3442,91384
+static inline HMM_Vec2 operator/(HMM_Vec2 Left, float Right)operator /3449,91547
+static inline HMM_Vec3 operator/(HMM_Vec3 Left, float Right)operator /3456,91709
+static inline HMM_Vec4 operator/(HMM_Vec4 Left, float Right)operator /3463,91871
+static inline HMM_Mat4 operator/(HMM_Mat4 Left, float Right)operator /3470,92033
+static inline HMM_Mat3 operator/(HMM_Mat3 Left, float Right)operator /3477,92195
+static inline HMM_Mat2 operator/(HMM_Mat2 Left, float Right)operator /3484,92357
+static inline HMM_Quat operator/(HMM_Quat Left, float Right)operator /3491,92518
+static inline HMM_Vec2 &operator+=(HMM_Vec2 &Left, HMM_Vec2 Right)operator +=3498,92681
+static inline HMM_Vec3 &operator+=(HMM_Vec3 &Left, HMM_Vec3 Right)operator +=3505,92851
+static inline HMM_Vec4 &operator+=(HMM_Vec4 &Left, HMM_Vec4 Right)operator +=3512,93021
+static inline HMM_Mat2 &operator+=(HMM_Mat2 &Left, HMM_Mat2 Right)operator +=3519,93191
+static inline HMM_Mat3 &operator+=(HMM_Mat3 &Left, HMM_Mat3 Right)operator +=3526,93361
+static inline HMM_Mat4 &operator+=(HMM_Mat4 &Left, HMM_Mat4 Right)operator +=3533,93531
+static inline HMM_Quat &operator+=(HMM_Quat &Left, HMM_Quat Right)operator +=3540,93700
+static inline HMM_Vec2 &operator-=(HMM_Vec2 &Left, HMM_Vec2 Right)operator -=3547,93869
+static inline HMM_Vec3 &operator-=(HMM_Vec3 &Left, HMM_Vec3 Right)operator -=3554,94039
+static inline HMM_Vec4 &operator-=(HMM_Vec4 &Left, HMM_Vec4 Right)operator -=3561,94209
+static inline HMM_Mat2 &operator-=(HMM_Mat2 &Left, HMM_Mat2 Right)operator -=3568,94379
+static inline HMM_Mat3 &operator-=(HMM_Mat3 &Left, HMM_Mat3 Right)operator -=3575,94549
+static inline HMM_Mat4 &operator-=(HMM_Mat4 &Left, HMM_Mat4 Right)operator -=3582,94719
+static inline HMM_Quat &operator-=(HMM_Quat &Left, HMM_Quat Right)operator -=3589,94888
+static inline HMM_Vec2 &operator*=(HMM_Vec2 &Left, HMM_Vec2 Right)operator *=3596,95057
+static inline HMM_Vec3 &operator*=(HMM_Vec3 &Left, HMM_Vec3 Right)operator *=3603,95227
+static inline HMM_Vec4 &operator*=(HMM_Vec4 &Left, HMM_Vec4 Right)operator *=3610,95397
+static inline HMM_Vec2 &operator*=(HMM_Vec2 &Left, float Right)operator *=3617,95568
+static inline HMM_Vec3 &operator*=(HMM_Vec3 &Left, float Right)operator *=3624,95737
+static inline HMM_Vec4 &operator*=(HMM_Vec4 &Left, float Right)operator *=3631,95906
+static inline HMM_Mat2 &operator*=(HMM_Mat2 &Left, float Right)operator *=3638,96075
+static inline HMM_Mat3 &operator*=(HMM_Mat3 &Left, float Right)operator *=3645,96244
+static inline HMM_Mat4 &operator*=(HMM_Mat4 &Left, float Right)operator *=3652,96413
+static inline HMM_Quat &operator*=(HMM_Quat &Left, float Right)operator *=3659,96581
+static inline HMM_Vec2 &operator/=(HMM_Vec2 &Left, HMM_Vec2 Right)operator /=3666,96748
+static inline HMM_Vec3 &operator/=(HMM_Vec3 &Left, HMM_Vec3 Right)operator /=3673,96918
+static inline HMM_Vec4 &operator/=(HMM_Vec4 &Left, HMM_Vec4 Right)operator /=3680,97088
+static inline HMM_Vec2 &operator/=(HMM_Vec2 &Left, float Right)operator /=3687,97259
+static inline HMM_Vec3 &operator/=(HMM_Vec3 &Left, float Right)operator /=3694,97428
+static inline HMM_Vec4 &operator/=(HMM_Vec4 &Left, float Right)operator /=3701,97597
+static inline HMM_Mat4 &operator/=(HMM_Mat4 &Left, float Right)operator /=3708,97766
+static inline HMM_Quat &operator/=(HMM_Quat &Left, float Right)operator /=3715,97934
+static inline HMM_Bool operator==(HMM_Vec2 Left, HMM_Vec2 Right)operator ==3722,98096
+static inline HMM_Bool operator==(HMM_Vec3 Left, HMM_Vec3 Right)operator ==3729,98256
+static inline HMM_Bool operator==(HMM_Vec4 Left, HMM_Vec4 Right)operator ==3736,98416
+static inline HMM_Bool operator!=(HMM_Vec2 Left, HMM_Vec2 Right)operator !=3743,98579
+static inline HMM_Bool operator!=(HMM_Vec3 Left, HMM_Vec3 Right)operator !=3750,98746
+static inline HMM_Bool operator!=(HMM_Vec4 Left, HMM_Vec4 Right)operator !=3757,98913
+static inline HMM_Vec2 operator-(HMM_Vec2 In)operator -3764,99083
+static inline HMM_Vec3 operator-(HMM_Vec3 In)operator -3776,99288
+static inline HMM_Vec4 operator-(HMM_Vec4 In)operator -3789,99515
+#define HMM_Add(HMM_Add3809,99895
+#define HMM_Sub(HMM_Sub3819,100157
+#define HMM_Mul(HMM_Mul3829,100419
+#define HMM_Div(HMM_Div3853,101066
+#define HMM_Len(HMM_Len3874,101616
+#define HMM_LenSqr(HMM_LenSqr3880,101750
+#define HMM_Norm(HMM_Norm3886,101896
+#define HMM_Dot(HMM_Dot3892,102034
+#define HMM_Lerp(HMM_Lerp3898,102174
+#define HMM_Eq(HMM_Eq3905,102350
+#define HMM_Transpose(HMM_Transpose3911,102486
+#define HMM_Determinant(HMM_Determinant3917,102644
+#define HMM_InvGeneral(HMM_InvGeneral3923,102810
+
+c:/Dev/Snake/code\snake.cpp,2339
+#define STB_IMAGE_IMPLEMENTATIONSTB_IMAGE_IMPLEMENTATION3,42
+#define HANDMADE_MATH_USE_DEGREESHANDMADE_MATH_USE_DEGREES6,102
+typedef uint8_t  u8;u812,209
+typedef uint16_t u16;u1613,231
+typedef uint32_t u32;u3214,254
+typedef uint64_t u64;u6415,277
+typedef int8_t   s8;s816,300
+typedef int16_t  s16;s1617,322
+typedef int32_t  s32;s3218,345
+typedef int64_t  s64;s6419,368
+typedef float  f32;f3220,391
+typedef double f64;f6421,412
+typedef s32 b32;b3222,433
+struct Input {Input24,453
+    b32 up;up25,469
+    b32 up;Input::up25,469
+    b32 down;down26,482
+    b32 down;Input::down26,482
+    b32 left;left27,497
+    b32 left;Input::left27,497
+    b32 right;right28,512
+    b32 right;Input::right28,512
+enum Dir {Dir32,553
+    Left = 1,Left33,565
+    Right,Right34,580
+    Up,Up35,592
+    Down,Down36,601
+struct Cell {Cell39,618
+    int x;x40,633
+    int x;Cell::x40,633
+    int y;y41,645
+    int y;Cell::y41,645
+    Dir dir;dir42,657
+    Dir dir;Cell::dir42,657
+    Cell() {Cell44,673
+    Cell() {Cell::Cell44,673
+    Cell(int x, int y) {Cell50,755
+    Cell(int x, int y) {Cell::Cell50,755
+    Cell(int x, int y, Dir dir) {Cell56,857
+    Cell(int x, int y, Dir dir) {Cell::Cell56,857
+#define WIDTH WIDTH64,977
+#define HEIGHT HEIGHT65,997
+#define ARRLEN(ARRLEN67,1019
+u32 quad_shader;quad_shader69,1069
+u32 quad_vao;quad_vao70,1087
+u32 gl_texture_create(const char *texture_path) {gl_texture_create72,1104
+u32 gl_shader_create(const char *vertex_src, const char *frag_src) {gl_shader_create97,2035
+u32 gl_shader_create_file(const char *vertex_name, const char *frag_name) {gl_shader_create_file140,3247
+void draw_quad(HMM_Vec2 translation, HMM_Vec2 scale, f32 rotation, HMM_Mat4 projection, u32 texture) {draw_quad167,4036
+HMM_Vec2 direction_vector(Dir dir) {direction_vector186,4845
+f32 direction_rotation(Dir dir) {direction_rotation205,5192
+void snake_step(Cell *snake_cells, int snake_length) {snake_step226,5517
+void grow_snake(Cell *snake_cells, int snake_length) {grow_snake239,6031
+Cell spawn_apple(Cell *snake_cells, int snake_length, int grid_x, int grid_y) {spawn_apple259,6473
+int main(int argc, char **argv) {main281,7046
+#define GRID_X GRID_X349,9578
+#define GRID_Y GRID_Y350,9597
+#define MAX_CELLS MAX_CELLS351,9615
