@@ -21,53 +21,17 @@ typedef float  f32;
 typedef double f64;
 typedef s32 b32;
 
-struct Input {
-    b32 up;
-    b32 down;
-    b32 left;
-    b32 right;
-};
-Input input{};
-   
-enum Dir {
-    Left = 1,
-    Right,
-    Up,
-    Down,
-};
-
-struct Cell {
-    int x;
-    int y;
-    Dir dir;
-
-    Cell() {
-        x = 0;
-        y = 0;
-        dir = (Dir)0;
-    }
-    
-    Cell(int x, int y) {
-        this->x = x;
-        this->y = y;
-        dir = (Dir)0;
-    }
-
-    Cell(int x, int y, Dir dir) {
-        this->x = x;
-        this->y = y;
-        this->dir = dir;
-    }
-};
-
+#include "snake.h"
 
 #define WIDTH 1280
 #define HEIGHT 720
-
-#define ARRLEN(X) (sizeof(X) / sizeof((X)[0]))
+#define CELL_Y 20
+#define MAX_CELLS 512
 
 u32 quad_shader;
 u32 quad_vao;
+u32 grid_vao;
+u32 text_vao;
 
 u32 gl_texture_create(const char *texture_path) {
     stbi_set_flip_vertically_on_load(true);
@@ -165,9 +129,6 @@ u32 gl_shader_create_file(const char *vertex_name, const char *frag_name) {
 }
 
 void draw_quad(HMM_Vec2 translation, HMM_Vec2 scale, f32 rotation, HMM_Mat4 projection, u32 texture) {
-    glBindVertexArray(quad_vao);
-    glUseProgram(quad_shader);
-
     HMM_Mat4 model = HMM_M4D(1.0f);
     model = model * HMM_Translate(HMM_V3(translation.X, translation.Y, 0.0f));
 
@@ -178,10 +139,35 @@ void draw_quad(HMM_Vec2 translation, HMM_Vec2 scale, f32 rotation, HMM_Mat4 proj
     model = model * HMM_Scale(HMM_V3(scale.X, scale.Y, 1.0));
     model = projection * model;
 
+    glBindVertexArray(quad_vao);
+    glUseProgram(quad_shader);
     glUniformMatrix4fv(glGetUniformLocation(quad_shader, "wvp"), 1, false, (f32 *)&model);
     glBindTexture(GL_TEXTURE_2D, texture);
     glDrawArrays(GL_TRIANGLES, 0, 6);
 }
+
+void draw_grid(HMM_Vec2 window_dim, f32 cell_size, u32 texture, HMM_Mat4 projection) {
+
+    f32 cell_x = (window_dim.Width / cell_size) / 2.0f;
+    f32 cell_y = (window_dim.Height / cell_size) / 2.0f;
+
+    f32 grid_verts[] = {
+        0.0f, 0.0f,                            0.0f, 0.0f,
+        0.0f, window_dim.Height,               0.0f, cell_y,
+        window_dim.Width, window_dim.Height,   cell_x, cell_y,
+
+        0.0f, 0.0f,                            0.0f, 0.0f,
+        window_dim.Width, window_dim.Height,   cell_x, cell_y,
+        window_dim.Width, 0.0f,                cell_x, 0.0f
+    };
+
+    glBindVertexArray(grid_vao);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(grid_verts), (void *)grid_verts);
+    glUniformMatrix4fv(glGetUniformLocation(quad_shader, "wvp"), 1, false, (float *)&projection);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+}
+
 
 HMM_Vec2 direction_vector(Dir dir) {
     HMM_Vec2 result{};
@@ -222,7 +208,6 @@ f32 direction_rotation(Dir dir) {
     return rot;
 }
 
-
 void snake_step(Cell *snake_cells, int snake_length) {
     Dir dir = snake_cells[0].dir;
     snake_cells[0].x += (dir==Left) ? -1 : (dir==Right) ? 1 : 0;
@@ -256,15 +241,15 @@ void grow_snake(Cell *snake_cells, int snake_length) {
     snake_cells[snake_length] = new_cell;
 }
 
-Cell spawn_apple(Cell *snake_cells, int snake_length, int grid_x, int grid_y) {
+Cell spawn_apple(Cell *snake_cells, int snake_length, int cell_x, int cell_y) {
     Cell result{};
+    srand(SDL_GetTicks());
     for (;;) {
-        srand(SDL_GetTicks());
-        int x = rand() % grid_x;
-        int y = rand() % grid_y;
+        int x = rand() % cell_x;
+        int y = rand() % cell_y;
         b32 collision = false;
         for (int i = 0; i < snake_length; i++) {
-            if (x == snake_cells[i].x || y == snake_cells[i].y) {
+            if (x == snake_cells[i].x && y == snake_cells[i].y) {
                 collision = true;
             }
         }
@@ -278,6 +263,46 @@ Cell spawn_apple(Cell *snake_cells, int snake_length, int grid_x, int grid_y) {
     return result;
 }
 
+void draw_text(const char *text, HMM_Vec2 start, f32 char_size, u32 texture, HMM_Mat4 projection) {
+    int vert_count = 0;
+    QuadV vertices[1024]{};
+
+    HMM_Vec2 pos = start;
+    f32 glyph_step = 8.0f / 472.0f;
+    
+    for (const char *ptr = text; *ptr; ptr++) {
+        char ch = *ptr;
+        if (ch == '\n') {
+            pos.x = start.x;
+            pos.y -= char_size;
+            continue;
+        }
+
+        f32 char_off = (f32)(ch - ' ');
+        f32 off_x = char_off * glyph_step;
+
+        vertices[vert_count++] = {pos.x, pos.y,                          off_x, 0.0f};
+        vertices[vert_count++] = {pos.x, pos.y + char_size,              off_x, 1.0f};
+        vertices[vert_count++] = {pos.x + char_size, pos.y + char_size,  off_x + glyph_step, 1.0f};
+        vertices[vert_count++] = {pos.x, pos.y,                          off_x, 0.0f};
+        vertices[vert_count++] = {pos.x + char_size, pos.y + char_size,  off_x + glyph_step, 1.0f};
+        vertices[vert_count++] = {pos.x + char_size, pos.y,              off_x + glyph_step, 0.0f};
+
+        pos.x += char_size;
+    }
+
+    glBindVertexArray(text_vao);
+    glBufferData(GL_ARRAY_BUFFER, vert_count * sizeof(QuadV), vertices, GL_DYNAMIC_DRAW);
+
+    glVertexAttribPointer(0, 2, GL_FLOAT, false, 4 * sizeof(f32), (void *)0);
+    glVertexAttribPointer(1, 2, GL_FLOAT, false, 4 * sizeof(f32), (void *)(2 * sizeof(f32)));
+
+    glUseProgram(quad_shader);
+    glUniformMatrix4fv(glGetUniformLocation(quad_shader, "wvp"), 1, false, (f32 *)&projection);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    glDrawArrays(GL_TRIANGLES, 0, vert_count);
+}
+
 int main(int argc, char **argv) {
     if (SDL_Init(SDL_INIT_VIDEO)) {
         SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "SDL Error", "Failed to initialize SDL Video", NULL);
@@ -287,10 +312,10 @@ int main(int argc, char **argv) {
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-    SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
+    // SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
     SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 ); 
 
-    SDL_Window *window = SDL_CreateWindow("Snake", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
+    SDL_Window *window = SDL_CreateWindow("Snake", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
 
     if (window == nullptr) {
         SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "SDL Error", "Failed to create SDL window", NULL);
@@ -299,6 +324,14 @@ int main(int argc, char **argv) {
     
     SDL_GLContext context = SDL_GL_CreateContext(window);
     gladLoadGLLoader(SDL_GL_GetProcAddress);
+
+    u32 arrow_texture = gl_texture_create("data/arrow.png");
+    u32 cell_texture = gl_texture_create("data/cell.png");
+    u32 apple_texture = gl_texture_create("data/apple.png");
+    u32 font_texture = gl_texture_create("data/font.png");
+    u32 grid_texture = gl_texture_create("data/grid.png");
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
     const char *quad_vshader = "#version 330 core\n"
         "layout (location = 0) in vec2 in_pos;\n"
@@ -329,61 +362,92 @@ int main(int argc, char **argv) {
         1.0f, 0.0f, 1.0f, 0.0f,
     };
 
-    u32 cell_texture = gl_texture_create("data/cell.png");
-    u32 grid_texture = gl_texture_create("data/grid.png");
-    u32 apple_texture = gl_texture_create("data/apple.png");
-
     u32 quad_vbo;
     glGenBuffers(1, &quad_vbo);
     glGenVertexArrays(1, &quad_vao);
-    
-    glBindVertexArray(quad_vao);
     glBindBuffer(GL_ARRAY_BUFFER, quad_vbo);
     glBufferData(GL_ARRAY_BUFFER, sizeof(quad_verts), quad_verts, GL_STATIC_DRAW);
-
+    glBindVertexArray(quad_vao);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 2, GL_FLOAT, false, 4 * sizeof(f32), (void *)0);
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 2, GL_FLOAT, false, 4 * sizeof(f32), (void *)(2 * sizeof(f32)));
+    glBindVertexArray(0);
 
-#define GRID_X 16
-#define GRID_Y 9
-#define MAX_CELLS 100
+    u32 text_vbo;
+    glGenBuffers(1, &text_vbo);
+    glGenVertexArrays(1, &text_vao);
+    glBindBuffer(GL_ARRAY_BUFFER, text_vbo);
+    glBufferData(GL_ARRAY_BUFFER, 0, NULL, GL_DYNAMIC_DRAW);
+    glBindVertexArray(text_vao);
+    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
+    glBindVertexArray(0);
 
-    f32 cell_width = ((f32)WIDTH / (f32)GRID_X);
-    f32 cell_height = ((f32)HEIGHT / (f32)GRID_Y);
+    u32 grid_vbo;
+    glGenBuffers(1, &grid_vbo);
+    glGenVertexArrays(1, &grid_vao);
+    glBindBuffer(GL_ARRAY_BUFFER, grid_vbo);
+    glBufferData(GL_ARRAY_BUFFER, 6 * 4 * sizeof(f32), 0, GL_STATIC_DRAW);
+    glBindVertexArray(grid_vao);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 2, GL_FLOAT, false, 4 * sizeof(f32), (void *)0);
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 2, GL_FLOAT, false, 4 * sizeof(f32), (void *)(2 * sizeof(f32)));
+    glBindVertexArray(0);
 
+    int window_width, window_height;
+    SDL_GetWindowSize(window, &window_width, &window_height);
+    
+    int cell_y = CELL_Y;
+    f32 cell_size = (f32)window_height / (f32)cell_y;
+    int cell_x = (int)(window_width / cell_size);
+   
     Dir selected_dir = Right;
     
     int snake_length = 1;
     Cell *snake_cells = (Cell *)calloc(MAX_CELLS, sizeof(Cell));
     snake_cells[0] = Cell(0, 4, Right);
 
-    Cell apple = spawn_apple(snake_cells, snake_length, GRID_X, GRID_Y);
+    Cell apple = spawn_apple(snake_cells, snake_length, cell_x, cell_y);
+
+    Input input{};
+    bool window_should_close = false; 
+    GameState game_state{};
+    b32 start_selected = true;
+    b32 exit_selected = false;
 
     u32 start_time = SDL_GetTicks();
-    bool window_should_close = false; 
     while (!window_should_close) {
         SDL_Event event;
         while (SDL_PollEvent(&event)) { 
             switch (event.type) {
-            case SDL_WINDOWEVENT_SIZE_CHANGED: {
-                glViewport(0, 0, event.window.data1, event.window.data2);
+            case SDL_WINDOWEVENT: {
+                if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
+                    glViewport(0, 0, event.window.data1, event.window.data2);
+                }
             } break;
             case SDL_KEYDOWN:
             case SDL_KEYUP: {
                 b32 is_down = event.key.state == SDL_PRESSED;
                 switch (event.key.keysym.sym) {
+                case SDLK_RETURN:
+                    input.enter = is_down;
+                    break;
                 case SDLK_UP:
+                case 'w':
                     input.up = is_down;
                     break;
                 case SDLK_DOWN:
+                case 's':
                     input.down = is_down;
                     break;
                 case SDLK_LEFT:
+                case 'a':
                     input.left = is_down;
                     break;
                 case SDLK_RIGHT:
+                case 'd':
                     input.right = is_down;
                     break;
                 }
@@ -394,53 +458,99 @@ int main(int argc, char **argv) {
             }
         }
       
-        Dir dir = snake_cells[0].dir;
-        if (input.left && dir != Right) {
-            selected_dir = Left;
-        }
-        else if (input.right && dir != Left) {
-            selected_dir = Right;
-        }
-        else if (input.up && dir != Down) {
-            selected_dir = Up;
-        }
-        else if (input.down && dir != Up) {
-            selected_dir = Down;
-        }
+        SDL_GetWindowSize(window, &window_width, &window_height);
+        HMM_Mat4 projection = HMM_Orthographic_RH_NO(0.0f, (float)window_width, 0.0f, (float)window_height, -1.0f, 1.0f);
 
-        f32 time = (f32)(SDL_GetTicks() - start_time) / 1000.0f;
-        if (time >= 0.2f) {
-            snake_cells[0].dir = selected_dir;
-            snake_step(snake_cells, snake_length);
-            start_time = SDL_GetTicks();
-        }
-
-        if (snake_cells[0].x == apple.x && snake_cells[0].y == apple.y) {
-            grow_snake(snake_cells, snake_length);
-            snake_length++;
-            apple = spawn_apple(snake_cells, snake_length, GRID_X, GRID_Y);
-        }
-
-        int width, height;
-        SDL_GetWindowSize(window, &width, &height);
-        HMM_Mat4 projection = HMM_Orthographic_RH_NO(0.0f, (float)width, 0.0f, (float)height, -1.0f, 1.0f);
-        
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
         glClear(GL_COLOR_BUFFER_BIT);
-        glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
-        draw_quad(HMM_V2(0.0f, 0.0f), HMM_V2((f32)width, (f32)height), 0.0f, projection, grid_texture);
+        if (game_state.game_mode == Mode_Start) {
+            if (input.up) {
+                if (exit_selected) {
+                    start_selected = true;
+                    exit_selected = false;
+                }
+            } else if (input.down) {
+                if (start_selected) {
+                    start_selected = false;
+                    exit_selected = true;
+                }
+            }
 
-        const HMM_Vec2 cell_size = HMM_V2(cell_width, cell_height);
+            if (input.enter) {
+                if (start_selected) {
+                    game_state.game_mode = Mode_Play;
+                } else if (exit_selected) {
+                    window_should_close = true;
+                }
+            }
+ 
+            draw_text("SNAKE 2D\nSTART\nEXIT", HMM_V2(400.0f, 600.0f), 50.0f, font_texture, projection);
+           
+            if (start_selected) {
+                draw_quad(HMM_V2(400.0f - 50.0f, 550.0f), HMM_V2(50.0f, 50.0f), 0.0f, projection, arrow_texture);
+            } else if (exit_selected) {
+                draw_quad(HMM_V2(400.0f - 50.0f, 500.0f), HMM_V2(50.0f, 50.0f), 0.0f, projection, arrow_texture);
+            }
+        } else if (game_state.game_mode == Mode_Play) {
+            Dir dir = snake_cells[0].dir;
+            if (input.left && dir != Right) {
+                selected_dir = Left;
+            }
+            else if (input.right && dir != Left) {
+                selected_dir = Right;
+            }
+            else if (input.up && dir != Down) {
+                selected_dir = Up;
+            }
+            else if (input.down && dir != Up) {
+                selected_dir = Down;
+            }
 
-        draw_quad(HMM_V2(apple.x * cell_width, apple.y * cell_height), cell_size, (f32)SDL_GetTicks() * 0.1f, projection, apple_texture);
+            f32 time = (f32)(SDL_GetTicks() - start_time) / 1000.0f;
+            if (time >= 0.1f) {
+                snake_cells[0].dir = selected_dir;
+                snake_step(snake_cells, snake_length);
 
-        for (int i = 0; i < snake_length; i++) {
-            f32 rot = 0.0f;
-            HMM_Vec2 pos = HMM_V2(snake_cells[i].x * cell_width, snake_cells[i].y * cell_height);
-            draw_quad(pos, cell_size, rot, projection, cell_texture);
+                // Death
+                Cell *head = snake_cells;
+                if (head->x > cell_x || head->x < 0 || head->y < 0 || head->y > cell_y) {
+                    game_state.game_mode = Mode_End;
+                }
+                for (int i = 1; i < snake_length + 1; i++) {
+                    if (head->x == snake_cells[i].x && head->y == snake_cells[i].y) {
+                        game_state.game_mode = Mode_End;
+                    }
+                }
+
+                start_time = SDL_GetTicks();
+            }
+
+            if (snake_cells[0].x == apple.x && snake_cells[0].y == apple.y) {
+                grow_snake(snake_cells, snake_length);
+                snake_length++;
+                apple = spawn_apple(snake_cells, snake_length, cell_x, cell_y);
+            }
+            draw_grid(HMM_V2((float)window_width, (float)window_height), cell_size, grid_texture, projection);
+
+            HMM_Vec2 cell_dim = HMM_V2(cell_size, cell_size);
+
+            draw_quad(HMM_V2(apple.x * cell_size, apple.y * cell_size), cell_dim, (f32)SDL_GetTicks() * 0.1f, projection, apple_texture);
+
+            for (int i = 0; i < snake_length; i++) {
+                f32 rot = 0.0f;
+                HMM_Vec2 pos = HMM_V2(snake_cells[i].x * cell_size, snake_cells[i].y * cell_size);
+                draw_quad(pos, cell_dim, rot, projection, cell_texture);
+            }
+
+            char buffer[12]{};
+            sprintf(buffer, "%d", snake_length);
+            draw_text((const char *)buffer, HMM_V2(0.0f, 0.0f), 30.0f, font_texture, projection);
+        } else if (game_state.game_mode == Mode_End) {
+            draw_text("GAME OVER", HMM_V2(400.0f, 600.0f), 40.0f, font_texture, projection);
         }
 
         SDL_GL_SwapWindow(window);
